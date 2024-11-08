@@ -1,17 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Options App</title>
     <!-- font awesome cdn link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- taiwind cdn link -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
-    
+    <!-- top bar -->
+    <div data-topBar class="bg-slate-300 fixed top-0 right-0 left-0 py-2">
+        <p class="text-center py-1 font-semibold">
+            Car Configurator App
+        </p>
+    </div>
+
+    <!-- header -->
+    <header class="flex justify-between items-center px-10 py-6 mt-16">
+        <img src="./assets/logo.svg" alt="Website Logo" width="120" height="24">
+        <button class="flex items-center">
+            <i class="fa-solid fa-globe"></i>
+            <span class="font-bold">Lang</span>
+        </button>
+    </header>
+
+    <!-- main section -->
+    <main class="flex flex-col md:flex-row justify-between px-4 md:px-10 py-6">
+        <!-- image column -->
+        <section class="w-full md:w-3/4">
+            <div class="sticky top-24">
+                <!-- exterior image -->
+                <div class="h-96 bg-gray-200 flex items-center justify-center overflow-hidden mb-4">
+                    <img data-exterior src="./assets/images/model-y-stealth-grey.jpg" alt="Car model" class="max-w-full h-auto transform scale-150">
+                </div>
+                <!-- interior image -->
+                <div class="h-96 bg-gray-200 flex items-center justify-center overflow-hidden mb-4">
+                    <img data-interior src="./assets/images/model-y-interior-dark.jpg" alt="Car interior" class="max-w-full h-auto transform scale-125">
+                </div>
+            </div>
+        </section>
+        <!-- aside sidebar -->
+        <aside class="w-full md:w-1/3 pl-0 mt-6 md:pl-8 mt-0 z-2">
+            <h2 class="text-5xl text-center font-bold mb-5">Car Model</h2>
+            <h3 class="text-2xl text-center font-light">Customize Car</h3>
+        </aside>
+    </main>
 </body>
+
 </html>
