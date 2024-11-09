@@ -10,3 +10,15 @@
     transform: scale(1) !important;
     /* important flag to prevent TW from overriding it */
 }
+
+[data-topBar] {
+    transition: transform .5s ease-in-out;
+}
+
+.js-bar-hidden {
+    transform: translateY(-100%);
+}
+
+.js-bar-visible {
+    transform: translateY(0);
+}
