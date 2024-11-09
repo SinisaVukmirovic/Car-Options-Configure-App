@@ -39,11 +39,13 @@
             <div class="sticky top-24">
                 <!-- exterior image -->
                 <div class="h-96 bg-gray-200 flex items-center justify-center overflow-hidden mb-4">
-                    <img data-exterior src="./assets/images/model-y-stealth-grey.jpg" alt="Car model" class="max-w-full h-auto transform scale-150">
+                    <img data-exterior src="./assets/images/model-y-stealth-grey.jpg" alt="Car model"
+                        class="max-w-full h-auto transform scale-150">
                 </div>
                 <!-- interior image -->
                 <div class="h-96 bg-gray-200 flex items-center justify-center overflow-hidden mb-4">
-                    <img data-interior src="./assets/images/model-y-interior-dark.jpg" alt="Car interior" class="max-w-full h-auto transform scale-125">
+                    <img data-interior src="./assets/images/model-y-interior-dark.jpg" alt="Car interior"
+                        class="max-w-full h-auto transform scale-125">
                 </div>
             </div>
         </section>
@@ -90,9 +92,79 @@
             <!-- wheels option -->
             <div data-wheels class="my-8">
                 <h3 class="font-semibold mb-2">Wheels Options</h3>
-                <button class="w-full py-4 mb-2 bg-gray-700 text-white hover:bg-gray-600 hover:text-white rounded-lg transition-colors duration-300">Standard wheels</button>
-                <button class="w-full py-4 mb-2 bg-gray-300 hover:bg-gray-600 hover:text-white rounded-lg transition-colors duration-300">Performance wheels (+$2.500)</button>
-            </div> 
+                <button
+                    class="w-full py-4 mb-2 bg-gray-700 text-white hover:bg-gray-600 hover:text-white rounded-lg transition-colors duration-300">Standard
+                    wheels</button>
+                <button
+                    class="w-full py-4 mb-2 bg-gray-300 hover:bg-gray-600 hover:text-white rounded-lg transition-colors duration-300">Performance
+                    wheels (+$2,500)</button>
+            </div>
+            <!-- self driving option -->
+            <div class="border p-4 mb-8 rounded-lg shadow">
+                <h3 class="font-semibold mb-2">Self Driving</h3>
+                <label class="flex items-center space-x-3">
+                    <input type="checkbox" data-self-driving class="form-checkbox h-5 w-5 text-blue-600">
+                    <span>Add Self Driving for $8,500</span>
+                </label>
+            </div>
+            <!-- performance upgrade -->
+            <div class="mb-8">
+                <h3 class="font-semibold mb-2">Performance Package</h3>
+                <button class="w-full bg-gray-300 hover:bg-gray-400 py-4 rounded-lg">Performance Upgrade
+                    (+$5,000)</button>
+            </div>
+
+            <!-- Accessories Checkboxes -->
+            <div class="my-8">
+                <h3 class="font-semibold mb-2">Accessories</h3>
+                <div class="space-y-4">
+                    <label class="flex items-center justify-between py-4 px-4 border rounded-lg shadow">
+                        <span>Center Console Trays</span>
+                        <span class="flex items-center space-x-2">
+                            <input type="checkbox" class="accessory-form-checkbox h-5 w-5" />
+                            <span>$35</span>
+                        </span>
+                    </label>
+                    <label class="flex items-center justify-between py-4 px-4 border rounded-lg shadow">
+                        <span>Sunshade</span>
+                        <span class="flex items-center space-x-2">
+                            <input type="checkbox" class="accessory-form-checkbox h-5 w-5" />
+                            <span>$105</span>
+                        </span>
+                    </label>
+                    <label class="flex items-center justify-between py-4 px-4 border rounded-lg shadow">
+                        <span>All-Weather Interior Liners</span>
+                        <span class="flex items-center space-x-2">
+                            <input type="checkbox" class="accessory-form-checkbox h-5 w-5" />
+                            <span>$225</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- total price section -->
+            <div class="pt-4">
+                <h3 class="font-semibold text-lg">Total Price</h3>
+                <p data-total-price class="text-2xl font-bold">$52.490</p>
+            </div>
+            <!-- payment breakdown -->
+            <div class="border-t pt-4 mt-6">
+                <h3 class="font-semibold text-lg">Estimated Payment Breakdown</h3>
+                <div class="mt-4">
+                    <p>Down Payment:
+                        <span data-down-payment class="font-bold">$5,000</span>
+                    </p>
+                    <p>Loan Term:
+                        <span data-down-payment class="font-bold">60 months</span>
+                    </p>
+                    <p>Interest Rates:
+                        <span data-down-payment class="font-bold">3% APR</span>
+                    </p>
+                    <p>Down Payment:
+                        <span data-down-payment class="font-bold">$818.63</span>
+                    </p>
+                </div>
+            </div>
         </aside>
     </main>
 </body>
