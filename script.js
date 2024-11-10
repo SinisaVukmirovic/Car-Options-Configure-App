@@ -58,4 +58,3 @@ const handleOptionSelection = (e) => {
 
 exteriorOptions.addEventListener('click', handleOptionSelection);
 interiorOptions.addEventListener('click', handleOptionSelection);
-
