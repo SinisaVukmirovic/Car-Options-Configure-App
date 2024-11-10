@@ -3,6 +3,7 @@ const exteriorOptions = document.querySelector('[data-exterior-options]');
 const interiorOptions = document.querySelector('[data-interior-options]');
 const exteriorImgElem = document.querySelector('[data-exterior]');
 const interiorImgElem = document.querySelector('[data-interior]');
+const wheelsOptionsBtns = document.querySelector('[data-wheels]');
 
 // top bar functionality
 const topBarScrolling = () => {
@@ -58,3 +59,15 @@ const handleOptionSelection = (e) => {
 
 exteriorOptions.addEventListener('click', handleOptionSelection);
 interiorOptions.addEventListener('click', handleOptionSelection);
+
+// wheel options buttons selection functionality
+const wheelsOptionsSelection = (e) => {
+    if (e.target.tagName === 'BUTTON') {
+        const buttons = document.querySelectorAll('[data-wheels] button');
+
+        buttons.forEach(btn => btn.classList.remove('bg-gray-700', 'text-white'));
+        e.target.classList.add('bg-gray-700', 'text-white');
+    } 
+}
+
+wheelsOptionsBtns.addEventListener('click', wheelsOptionsSelection);
