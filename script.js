@@ -28,6 +28,24 @@ const interiorImgs = {
     Dark: './assets/images/model-y-interior-dark.jpg',
     Light: './assets/images/model-y-interior-light.jpg'
 }
+// ===========================================================
+
+let selectedExteriorColor = 'Stealth Grey';
+const selectedOptions = {
+    'Performance Wheels': false,
+    'Performance Package': false,
+    'Full Self-Driving': false
+}
+
+// update exterior image based on color and wheels functionality
+const updateExteriorImage = () => {
+    const performanceSuffix = selectedOptions['Performance Wheels'] ?
+    '-performance' : '';
+    const colorKey = selectedExteriorColor in exteriorImgs ? selectedExteriorColor : 'Stealth Grey';
+    console.log(colorKey)
+    
+    exteriorImgElem.src = exteriorImgs[colorKey].replace('.jpg', `${performanceSuffix}.jpg`);
+}
 
 // handle color selection functionality (for both, exterior and interior)
 const handleOptionSelection = (e) => {
@@ -46,8 +64,9 @@ const handleOptionSelection = (e) => {
 
         // exterior image change
         if (e.currentTarget === exteriorOptions) {
-            const selectedColor = button.querySelector('img').alt;
-            exteriorImgElem.src = exteriorImgs[selectedColor];
+            selectedExteriorColor = button.querySelector('img').alt;
+            // exteriorImgElem.src = exteriorImgs[selectedColor];
+            updateExteriorImage();
         }
         // interior image change
         if (e.currentTarget === interiorOptions) {
@@ -60,14 +79,23 @@ const handleOptionSelection = (e) => {
 exteriorOptions.addEventListener('click', handleOptionSelection);
 interiorOptions.addEventListener('click', handleOptionSelection);
 
+// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // wheel options buttons selection functionality
-const wheelsOptionsSelection = (e) => {
-    if (e.target.tagName === 'BUTTON') {
-        const buttons = document.querySelectorAll('[data-wheels] button');
+// const wheelsOptionsSelection = (e) => {
+//     if (e.target.tagName === 'BUTTON') {
+//         const buttons = document.querySelectorAll('[data-wheels] button');
 
-        buttons.forEach(btn => btn.classList.remove('bg-gray-700', 'text-white'));
-        e.target.classList.add('bg-gray-700', 'text-white');
-    } 
-}
+//         buttons.forEach(btn => btn.classList.remove('bg-gray-700', 'text-white'));
+//         e.target.classList.add('bg-gray-700', 'text-white');
 
-wheelsOptionsBtns.addEventListener('click', wheelsOptionsSelection);
+//         const selectedWheelsOption = e.target.textContent.includes('Performance');
+
+//         exteriorImgElem.src = selectedWheelsOption ? 
+//             'assets/images/model-y-stealth-grey-performance.jpg' :
+//             'assets/images/model-y-stealth-grey.jpg';
+//     } 
+// }
+
+// wheelsOptionsBtns.addEventListener('click', wheelsOptionsSelection);
+// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
