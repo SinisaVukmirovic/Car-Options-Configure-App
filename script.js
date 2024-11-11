@@ -81,21 +81,24 @@ interiorOptions.addEventListener('click', handleOptionSelection);
 
 // ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // wheel options buttons selection functionality
-// const wheelsOptionsSelection = (e) => {
-//     if (e.target.tagName === 'BUTTON') {
-//         const buttons = document.querySelectorAll('[data-wheels] button');
+const wheelsOptionsSelection = (e) => {
+    if (e.target.tagName === 'BUTTON') {
+        const buttons = document.querySelectorAll('[data-wheels] button');
 
-//         buttons.forEach(btn => btn.classList.remove('bg-gray-700', 'text-white'));
-//         e.target.classList.add('bg-gray-700', 'text-white');
+        buttons.forEach(btn => btn.classList.remove('bg-gray-700', 'text-white'));
+        e.target.classList.add('bg-gray-700', 'text-white');
 
-//         const selectedWheelsOption = e.target.textContent.includes('Performance');
+        // const selectedWheelsOption = e.target.textContent.includes('Performance');
+        selectedOptions['Performance Wheels'] = e.target.textContent.includes('Performance');
 
-//         exteriorImgElem.src = selectedWheelsOption ? 
-//             'assets/images/model-y-stealth-grey-performance.jpg' :
-//             'assets/images/model-y-stealth-grey.jpg';
-//     } 
-// }
+        // exteriorImgElem.src = selectedWheelsOption ? 
+        //     'assets/images/model-y-stealth-grey-performance.jpg' :
+        //     'assets/images/model-y-stealth-grey.jpg';
 
-// wheelsOptionsBtns.addEventListener('click', wheelsOptionsSelection);
+        updateExteriorImage();
+    } 
+}
+
+wheelsOptionsBtns.addEventListener('click', wheelsOptionsSelection);
 // ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
