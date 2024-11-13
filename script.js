@@ -4,6 +4,7 @@ const interiorOptions = document.querySelector('[data-interior-options]');
 const exteriorImgElem = document.querySelector('[data-exterior]');
 const interiorImgElem = document.querySelector('[data-interior]');
 const wheelsOptionsBtns = document.querySelector('[data-wheels]');
+const performanceUpgBtn = document.querySelector('[data-PerformanceUpg]');
 
 // top bar functionality
 const topBarScrolling = () => {
@@ -29,6 +30,7 @@ const interiorImgs = {
     Light: './assets/images/model-y-interior-light.jpg'
 }
 // ===========================================================
+// refactor to keep seleted exterior image while switching wheels
 
 let selectedExteriorColor = 'Stealth Grey';
 const selectedOptions = {
@@ -79,7 +81,6 @@ const handleOptionSelection = (e) => {
 exteriorOptions.addEventListener('click', handleOptionSelection);
 interiorOptions.addEventListener('click', handleOptionSelection);
 
-// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // wheel options buttons selection functionality
 const wheelsOptionsSelection = (e) => {
     if (e.target.tagName === 'BUTTON') {
@@ -100,5 +101,11 @@ const wheelsOptionsSelection = (e) => {
 }
 
 wheelsOptionsBtns.addEventListener('click', wheelsOptionsSelection);
-// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
+// performance option button select functionality
+const handlePerformanceBtnClick = () => {
+    performanceUpgBtn.classList.toggle('bg-gray-700');
+    performanceUpgBtn.classList.toggle('text-white');
+}
+
+performanceUpgBtn.addEventListener('click', handlePerformanceBtnClick);
