@@ -5,6 +5,21 @@ const exteriorImgElem = document.querySelector('[data-exterior]');
 const interiorImgElem = document.querySelector('[data-interior]');
 const wheelsOptionsBtns = document.querySelector('[data-wheels]');
 const performanceUpgBtn = document.querySelector('[data-PerformanceUpg]');
+const totalPriceElem = document.querySelector('[data-total-price]');
+
+const basePrice = 52490;
+let currentPrice = basePrice;
+
+const optionsPricing = {
+    'Performance Wheels': 2500,
+    'Performance Package': 5000,
+    'Full Self-Driving': 8500,
+    'Accessories': {
+        'Center Console Tray': 35,
+        'Sunshade': 105,
+        'All-weather Interior Liners': 225
+    }
+}
 
 // top bar functionality
 const topBarScrolling = () => {
@@ -109,3 +124,11 @@ const handlePerformanceBtnClick = () => {
 }
 
 performanceUpgBtn.addEventListener('click', handlePerformanceBtnClick);
+
+// updating total price based on selected options functionality
+const updateTotalPrice = () => {
+    // first reseting the current price to base price everytime the function is called
+    currentPrice = basePrice;
+    // display the update on the element in the UI
+    totalPriceElem.textContent = `$${currentPrice.toLocaleString()}`;
+}
