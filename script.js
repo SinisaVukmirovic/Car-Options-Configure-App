@@ -21,6 +21,23 @@ const optionsPricing = {
     }
 }
 
+// updating total price based on selected options functionality
+const updateTotalPrice = () => {
+    // first reseting the current price to base price everytime the function is called
+    currentPrice = basePrice;
+
+    if (selectedOptions['Performance Wheels']) {
+        currentPrice += optionsPricing['Performance Wheels'];
+    }
+
+    if (selectedOptions['Performance Package']) {
+        currentPrice += optionsPricing['Performance Package'];
+    }
+
+    // display the update on the element in the UI
+    totalPriceElem.textContent = `$${currentPrice.toLocaleString()}`;
+}
+
 // top bar functionality
 const topBarScrolling = () => {
     const atTop = window.scrollY === 0;
@@ -59,7 +76,6 @@ const updateExteriorImage = () => {
     const performanceSuffix = selectedOptions['Performance Wheels'] ?
     '-performance' : '';
     const colorKey = selectedExteriorColor in exteriorImgs ? selectedExteriorColor : 'Stealth Grey';
-    console.log(colorKey)
     
     exteriorImgElem.src = exteriorImgs[colorKey].replace('.jpg', `${performanceSuffix}.jpg`);
 }
@@ -111,7 +127,9 @@ const wheelsOptionsSelection = (e) => {
         //     'assets/images/model-y-stealth-grey-performance.jpg' :
         //     'assets/images/model-y-stealth-grey.jpg';
 
-        updateExteriorImage();
+        updateExteriorImage();  
+
+        updateTotalPrice();
     } 
 }
 
@@ -119,16 +137,14 @@ wheelsOptionsBtns.addEventListener('click', wheelsOptionsSelection);
 
 // performance option button select functionality
 const handlePerformanceBtnClick = () => {
-    performanceUpgBtn.classList.toggle('bg-gray-700');
+    const isSelected = performanceUpgBtn.classList.toggle('bg-gray-700');
     performanceUpgBtn.classList.toggle('text-white');
+
+    // update selected options 
+    selectedOptions['Performance Package'] = isSelected;
+
+    updateTotalPrice();
 }
 
 performanceUpgBtn.addEventListener('click', handlePerformanceBtnClick);
 
-// updating total price based on selected options functionality
-const updateTotalPrice = () => {
-    // first reseting the current price to base price everytime the function is called
-    currentPrice = basePrice;
-    // display the update on the element in the UI
-    totalPriceElem.textContent = `$${currentPrice.toLocaleString()}`;
-}
