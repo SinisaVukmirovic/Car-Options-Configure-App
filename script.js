@@ -7,6 +7,7 @@ const wheelsOptionsBtns = document.querySelector('[data-wheels]');
 const performanceUpgBtn = document.querySelector('[data-Performance-upg]');
 const totalPriceElem = document.querySelector('[data-total-price]');
 const fullSelfDrivingCheckbox = document.querySelector('[data-self-driving]');
+const accessoriesCheckboxes = document.querySelectorAll('.accessory-form-checkbox');
 
 const basePrice = 52490;
 let currentPrice = basePrice;
@@ -16,9 +17,9 @@ const optionsPricing = {
     'Performance Package': 5000,
     'Full Self-Driving': 8500,
     'Accessories': {
-        'Center Console Tray': 35,
+        'Center Console Trays': 35,
         'Sunshade': 105,
-        'All-weather Interior Liners': 225
+        'All-Weather Interior Liners': 225
     }
 }
 
@@ -38,6 +39,22 @@ const updateTotalPrice = () => {
     if (selectedOptions['Full Self-Driving']) {
         currentPrice += optionsPricing['Full Self-Driving'];
     }
+
+    // looping over accessories checkboxes
+    accessoriesCheckboxes.forEach(checkbox => {
+        // extracting the accessory label
+        const accessoryLabel = checkbox
+            .closest('label')
+            .querySelector('span')
+            .textContent.trim();
+
+        const accessoryPrice = optionsPricing['Accessories'][accessoryLabel];
+
+        // add to current price if option is checked
+        if (checkbox.checked) {
+            currentPrice += accessoryPrice;
+        }
+    });
 
     // display the update on the element in the UI
     totalPriceElem.textContent = `$${currentPrice.toLocaleString()}`;
@@ -67,7 +84,7 @@ const interiorImgs = {
     Light: './assets/images/model-y-interior-light.jpg'
 }
 // ===========================================================
-// refactor to keep seleted exterior image while switching wheels
+// refactor to keep selected exterior image while switching wheels
 
 let selectedExteriorColor = 'Stealth Grey';
 const selectedOptions = {
@@ -163,3 +180,8 @@ const fullSelfDrivingOption = () => {
 }
 
 fullSelfDrivingCheckbox.addEventListener('change', fullSelfDrivingOption);
+
+// handle eventlisteners for accessories checkboxes
+accessoriesCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => updateTotalPrice());
+});
