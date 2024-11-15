@@ -4,8 +4,9 @@ const interiorOptions = document.querySelector('[data-interior-options]');
 const exteriorImgElem = document.querySelector('[data-exterior]');
 const interiorImgElem = document.querySelector('[data-interior]');
 const wheelsOptionsBtns = document.querySelector('[data-wheels]');
-const performanceUpgBtn = document.querySelector('[data-PerformanceUpg]');
+const performanceUpgBtn = document.querySelector('[data-Performance-upg]');
 const totalPriceElem = document.querySelector('[data-total-price]');
+const fullSelfDrivingCheckbox = document.querySelector('[data-self-driving]');
 
 const basePrice = 52490;
 let currentPrice = basePrice;
@@ -32,6 +33,10 @@ const updateTotalPrice = () => {
 
     if (selectedOptions['Performance Package']) {
         currentPrice += optionsPricing['Performance Package'];
+    }
+
+    if (selectedOptions['Full Self-Driving']) {
+        currentPrice += optionsPricing['Full Self-Driving'];
     }
 
     // display the update on the element in the UI
@@ -148,3 +153,13 @@ const handlePerformanceBtnClick = () => {
 
 performanceUpgBtn.addEventListener('click', handlePerformanceBtnClick);
 
+// full self driving option selecting functionality
+const fullSelfDrivingOption = () => {
+    const isSelected = fullSelfDrivingCheckbox.checked;
+
+    selectedOptions['Full Self-Driving'] = isSelected;
+
+    updateTotalPrice();
+}
+
+fullSelfDrivingCheckbox.addEventListener('change', fullSelfDrivingOption);
