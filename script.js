@@ -70,6 +70,19 @@ const updatePaymentBreakdown = () => {
     // calculate down payment
     const downPayment = currentPrice * .1;
     downPaymentElem.textContent = `$${downPayment.toLocaleString()}`;
+
+    // calculate load details assuming 60 months load and 3% interest rate
+    const loanTermMonths = 60;
+    const interestRate = .03;
+
+    const loanAmount = currentPrice - downPayment;
+
+    // calculating monthly payment with formula P * (r(1+r)^n) / ((1 + r)^n - 1)
+    const monthlyInterestRate = interestRate / 12;
+
+    const monthlyPayment = (loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTermMonths))) / (Math.pow(1 + monthlyInterestRate, loanTermMonths) - 1);
+
+    monthlyPaymentElem.textContent = `$${monthlyPayment.toFixed(2).toLocaleString()}`;
 }
 
 // top bar functionality
