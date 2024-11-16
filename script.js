@@ -12,6 +12,9 @@ const accessoriesCheckboxes = document.querySelectorAll('.accessory-form-checkbo
 const basePrice = 52490;
 let currentPrice = basePrice;
 
+const downPaymentElem = document.querySelector('[data-down-payment]');
+const monthlyPaymentElem = document.querySelector('[data-monthy-payment]');
+
 const optionsPricing = {
     'Performance Wheels': 2500,
     'Performance Package': 5000,
@@ -58,6 +61,15 @@ const updateTotalPrice = () => {
 
     // display the update on the element in the UI
     totalPriceElem.textContent = `$${currentPrice.toLocaleString()}`;
+
+    updatePaymentBreakdown();
+}
+
+// update payment breakdown based on current price
+const updatePaymentBreakdown = () => {
+    // calculate down payment
+    const downPayment = currentPrice * .1;
+    downPaymentElem.textContent = `$${downPayment.toLocaleString()}`;
 }
 
 // top bar functionality
@@ -185,3 +197,6 @@ fullSelfDrivingCheckbox.addEventListener('change', fullSelfDrivingOption);
 accessoriesCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('change', () => updateTotalPrice());
 });
+
+// initial update total price
+updateTotalPrice();
